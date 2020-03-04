@@ -471,7 +471,9 @@ withCompletionHandler:(_Nullable SentryRequestOperationFinished)completionHandle
     dispatch_once(&onceToken, ^{
         installation = [[SentryInstallation alloc] init];
         [installation install];
-        [installation sendAllReports];
+        [installation sendAllReportsWithCompletion:^(NSArray *filteredReports, BOOL completed, NSError *error) {
+            [self.breadcrumbs clear];
+        }];
     });
     return YES;
 }
