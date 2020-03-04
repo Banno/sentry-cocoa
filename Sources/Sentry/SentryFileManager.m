@@ -167,7 +167,7 @@ NSInteger const defaultMaxBreadcrumbs = 200;
 - (NSString *)storeBreadcrumb:(SentryBreadcrumb *)crumb maxCount:(NSUInteger)maxCount {
     @synchronized (self) {
         NSString *result = [self storeDictionary:[crumb serialize] toPath:self.breadcrumbsPath];
-        [self handleFileManagerLimit:self.breadcrumbsPath maxCount:MIN(maxCount, self.maxBreadcrumbs)];
+//        [self handleFileManagerLimit:self.breadcrumbsPath maxCount:MIN(maxCount, self.maxBreadcrumbs)];
         return result;
     }
 }
